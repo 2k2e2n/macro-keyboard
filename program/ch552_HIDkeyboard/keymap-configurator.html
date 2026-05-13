@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CH552 キーマップ生成（ch552_HIDkeyboard）</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --border: #30363d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+      line-height: 1.5;
+    }
+    h1 { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.5rem; }
+    p.note { color: var(--muted); font-size: 0.9rem; margin: 0 0 1.5rem; }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1rem;
+    }
+    section h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+      font-weight: 600;
+    }
+    label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 0.5rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, monospace;
+      font-size: 0.9rem;
+    }
+    textarea { min-height: 4.5rem; resize: vertical; }
+    .row { margin-bottom: 0.75rem; }
+    .row:last-child { margin-bottom: 0; }
+    .radios label { display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 1rem; cursor: pointer; }
+    .radios input { width: auto; }
+    button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { filter: brightness(1.08); }
+    button.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    pre.preview {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.75rem;
+      max-height: 14rem;
+      overflow-y: auto;
+    }
+    .warn {
+      border-left: 3px solid #d29922;
+      padding-left: 0.75rem;
+      margin: 1rem 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>CH552 キーマップ生成</h1>
+  <p class="note">
+    設定から <code>ch552_HIDkeyboard.ino</code> を生成します。生成後、Arduino IDE で開き、コンパイルして CH552 に書き込んでください。
+    ブラウザから MCU へ直接書き込むには別途 WebUSB 対応の書き込みツールが必要で、ここでは生成のみ行います。
+  </p>
+
+  <section>
+    <h2>P3.2（押し続け）</h2>
+    <div class="row radios">
+      <label><input type="radio" name="m32-type" value="char" checked /> 1 文字（ASCII）</label>
+      <label><input type="radio" name="m32-type" value="special" /> 特殊キー（修飾・矢印など）</label>
+    </div>
+    <div class="row" id="m32-char-wrap">
+      <label for="m32-char">文字（1 文字のみ）</label>
+      <input type="text" id="m32-char" maxlength="1" value="a" />
+    </div>
+    <div class="row" id="m32-spec-wrap" hidden>
+      <label for="m32-special">特殊キー</label>
+      <select id="m32-special"></select>
+    </div>
+  </section>
+
+  <section>
+    <h2>P1.4（押した瞬間に送信する文字列）</h2>
+    <div class="row">
+      <label for="str14">文字列（ASCII 推奨・日本語は OS レイアウト次第で不可の場合あり）</label>
+      <textarea id="str14">Hello</textarea>
+    </div>
+  </section>
+
+  <section>
+    <h2>P1.5（押した瞬間に 1 回だけ送る特殊キー）</h2>
+    <div class="row">
+      <label for="tap15">キー</label>
+      <select id="tap15"></select>
+    </div>
+  </section>
+
+  <div class="warn">
+    ピン番号や LED を変える場合は、生成された .ino の <code>#define BUTTON_PIN_*</code> を手で編集してください。
+  </div>
+
+  <div class="actions">
+    <button type="button" id="btn-download">ch552_HIDkeyboard.ino をダウンロード</button>
+    <button type="button" class="secondary" id="btn-preview">プレビュー更新</button>
+  </div>
+
+  <pre class="preview" id="preview" aria-label="生成コードプレビュー"></pre>
+
+  <script>
+    const SPECIAL_OPTIONS = [
+      { label: "Caps Lock", key: "KEY_CAPS_LOCK" },
+      { label: "Enter", key: "KEY_RETURN" },
+      { label: "Escape", key: "KEY_ESC" },
+      { label: "Tab", key: "KEY_TAB" },
+      { label: "Backspace", key: "KEY_BACKSPACE" },
+      { label: "Delete", key: "KEY_DELETE" },
+      { label: "↑", key: "KEY_UP_ARROW" },
+      { label: "↓", key: "KEY_DOWN_ARROW" },
+      { label: "←", key: "KEY_LEFT_ARROW" },
+      { label: "→", key: "KEY_RIGHT_ARROW" },
+      { label: "Home", key: "KEY_HOME" },
+      { label: "End", key: "KEY_END" },
+      { label: "Page Up", key: "KEY_PAGE_UP" },
+      { label: "Page Down", key: "KEY_PAGE_DOWN" },
+      { label: "Insert", key: "KEY_INSERT" },
+      { label: "左 Ctrl", key: "KEY_LEFT_CTRL" },
+      { label: "左 Shift", key: "KEY_LEFT_SHIFT" },
+      { label: "左 Alt", key: "KEY_LEFT_ALT" },
+      { label: "左 GUI (Win)", key: "KEY_LEFT_GUI" },
+      { label: "F1", key: "KEY_F1" },
+      { label: "F2", key: "KEY_F2" },
+      { label: "F3", key: "KEY_F3" },
+      { label: "F4", key: "KEY_F4" },
+      { label: "F5", key: "KEY_F5" },
+      { label: "F6", key: "KEY_F6" },
+      { label: "F7", key: "KEY_F7" },
+      { label: "F8", key: "KEY_F8" },
+      { label: "F9", key: "KEY_F9" },
+      { label: "F10", key: "KEY_F10" },
+      { label: "F11", key: "KEY_F11" },
+      { label: "F12", key: "KEY_F12" },
+    ];
+
+    function fillSelect(sel, includeBlank) {
+      sel.innerHTML = "";
+      if (includeBlank) {
+        const o = document.createElement("option");
+        o.value = "";
+        o.textContent = "—";
+        sel.appendChild(o);
+      }
+      for (const x of SPECIAL_OPTIONS) {
+        const o = document.createElement("option");
+        o.value = x.key;
+        o.textContent = x.label + " (" + x.key + ")";
+        sel.appendChild(o);
+      }
+    }
+
+    const m32Special = document.getElementById("m32-special");
+    const tap15 = document.getElementById("tap15");
+    fillSelect(m32Special, false);
+    fillSelect(tap15, false);
+    tap15.value = "KEY_CAPS_LOCK";
+
+    document.querySelectorAll('input[name="m32-type"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        const spec = document.querySelector('input[name="m32-type"]:checked').value === "special";
+        document.getElementById("m32-char-wrap").hidden = spec;
+        document.getElementById("m32-spec-wrap").hidden = !spec;
+      });
+    });
+
+    function cCharLiteral(ch) {
+      if (ch.length === 0) return "' '";
+      const c = ch[0];
+      if (c === "\\") return "'\\\\'";
+      if (c === "'") return "'\\''";
+      if (c === "\n") return "'\\n'";
+      if (c === "\r") return "'\\r'";
+      if (c === "\t") return "'\\t'";
+      return "'" + c.replace(/\\/g, "\\\\").replace(/'/g, "\\'") + "'";
+    }
+
+    function asciiOnlyWarning(str) {
+      for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 127) return true;
+      }
+      return false;
+    }
+
+    function buildIno() {
+      const holdIsSpecial = document.querySelector('input[name="m32-type"]:checked').value === "special";
+      const holdChar = document.getElementById("m32-char").value || "a";
+      const holdSpecial = document.getElementById("m32-special").value || "KEY_LEFT_CTRL";
+      const str14 = document.getElementById("str14").value;
+      const tapKey = document.getElementById("tap15").value;
+
+      let pressReleaseBlock;
+      if (holdIsSpecial) {
+        pressReleaseBlock =
+          "      Keyboard_press(" +
+          holdSpecial +
+          ");\n" +
+          "    } else {\n" +
+          "      Keyboard_release(" +
+          holdSpecial +
+          ");";
+      } else {
+        const lit = cCharLiteral(holdChar);
+        pressReleaseBlock =
+          "      Keyboard_press(" + lit + ");\n" +
+          "    } else {\n" +
+          "      Keyboard_release(" + lit + ");";
+      }
+
+      const writes = [];
+      for (let i = 0; i < str14.length; i++) {
+        writes.push("      Keyboard_write(" + cCharLiteral(str14[i]) + ");");
+      }
+      const writeBlock = writes.length ? writes.join("\n") : "      /* 空文字列 */";
+
+      const warn =
+        asciiOnlyWarning(str14) || (!holdIsSpecial && holdChar.charCodeAt(0) > 127)
+          ? "\n * NOTE: 非 ASCII 文字が含まれています。CH552 の ASCII マップでは動かない可能性があります。\n"
+          : "";
+
+      return (
+        "/**\n" +
+        " * CH552 USB HID キーボード（ch55xduino）\n" +
+        " * このファイルは keymap-configurator.html から生成しました。\n" +
+        " *\n" +
+        " * ツール → USB Settings: USER CODE w/ 148B USB ram（user148）\n" +
+        " *\n" +
+        " * P3.2 → 押し続け\n" +
+        " * P1.4 → 文字列（タップ）\n" +
+        " * P1.5 → 特殊キー 1 回\n" +
+        warn +
+        " */\n\n" +
+        "#ifndef USER_USB_RAM\n" +
+        '#error "ツール → USB Settings で USER CODE w/ 148B USB RAM を選んでビルドしてください。"\n' +
+        "#endif\n\n" +
+        '#include "src/userUsbHidKeyboard/USBHIDKeyboard.h"\n\n' +
+        "#define BUTTON_PIN_HOLD     32   // P3.2\n" +
+        "#define BUTTON_PIN_STRING   14   // P1.4\n" +
+        "#define BUTTON_PIN_TAP      15   // P1.5\n\n" +
+        "#define LED_PIN_CAPS        33   // P3.3\n\n" +
+        "static bool prevHold = false;\n" +
+        "static bool prevString = false;\n" +
+        "static bool prevTap = false;\n\n" +
+        "void setup() {\n" +
+        "  USBInit();\n\n" +
+        "  pinMode(BUTTON_PIN_HOLD, INPUT_PULLUP);\n" +
+        "  pinMode(BUTTON_PIN_STRING, INPUT_PULLUP);\n" +
+        "  pinMode(BUTTON_PIN_TAP, INPUT_PULLUP);\n" +
+        "  pinMode(LED_PIN_CAPS, OUTPUT);\n" +
+        "}\n\n" +
+        "void loop() {\n" +
+        "  bool downHold = !digitalRead(BUTTON_PIN_HOLD);\n" +
+        "  if (prevHold != downHold) {\n" +
+        "    prevHold = downHold;\n" +
+        "    if (downHold) {\n" +
+        pressReleaseBlock +
+        "\n" +
+        "    }\n" +
+        "  }\n\n" +
+        "  bool downStr = !digitalRead(BUTTON_PIN_STRING);\n" +
+        "  if (prevString != downStr) {\n" +
+        "    prevString = downStr;\n" +
+        "    if (downStr) {\n" +
+        writeBlock +
+        "\n" +
+        "    }\n" +
+        "  }\n\n" +
+        "  bool downTap = !digitalRead(BUTTON_PIN_TAP);\n" +
+        "  if (prevTap != downTap) {\n" +
+        "    prevTap = downTap;\n" +
+        "    if (downTap) {\n" +
+        "      Keyboard_press(" +
+        tapKey +
+        ");\n" +
+        "      delay(100);\n" +
+        "      Keyboard_release(" +
+        tapKey +
+        ");\n" +
+        "    }\n" +
+        "  }\n\n" +
+        "  if (Keyboard_getLEDStatus() & 2) {\n" +
+        "    digitalWrite(LED_PIN_CAPS, HIGH);\n" +
+        "  } else {\n" +
+        "    digitalWrite(LED_PIN_CAPS, LOW);\n" +
+        "  }\n\n" +
+        "  delay(50);\n" +
+        "}\n"
+      );
+    }
+
+    function download(filename, text) {
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function refreshPreview() {
+      document.getElementById("preview").textContent = buildIno();
+    }
+
+    document.getElementById("btn-download").addEventListener("click", () => {
+      download("ch552_HIDkeyboard.ino", buildIno());
+    });
+    document.getElementById("btn-preview").addEventListener("click", refreshPreview);
+
+    refreshPreview();
+    document.querySelectorAll("input, textarea, select").forEach((el) => {
+      el.addEventListener("input", refreshPreview);
+      el.addEventListener("change", refreshPreview);
+    });
+  </script>
+</body>
+</html>
