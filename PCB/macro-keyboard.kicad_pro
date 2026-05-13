@@ -632,13 +632,17 @@
         "uuid": "cf53fae0-a927-439a-a4e5-3f09c01c20e3"
       }
     ],
-    "used_designators": "U1-2,D1-9,#PWR1-20,C1-4,SW1-11,P1,R1-4,#FLG1-4,H1-5",
+    "used_designators": "#PWR1-40,D1-19,C1-6,#FLG1-3,R1-4,SW1-11,P1,H1-5,U1",
     "variants": []
   },
   "sheets": [
     [
       "cf53fae0-a927-439a-a4e5-3f09c01c20e3",
       "macro-keyboard"
+    ],
+    [
+      "c9c50e51-6130-4161-bee2-9097fd62c69f",
+      "LED"
     ]
   ],
   "text_variables": {},

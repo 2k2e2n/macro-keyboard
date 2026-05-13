@@ -1385,277 +1385,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "LED:SK6812MINI-E"
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D"
-				(at 5.08 5.715 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify right bottom)
-				)
-			)
-			(property "Value" "SK6812MINI-E"
-				(at 1.27 -5.715 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-				(at 1.27 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-				(at 2.54 -9.525 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Description" "RGB LED with integrated controller"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "RGB LED NeoPixel addressable"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "LED?SK6812MINI?E?3.2x2.8mm?P1.5mm*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SK6812MINI-E_0_0"
-				(text "RGB"
-					(at 2.286 -4.191 0)
-					(effects
-						(font
-							(size 0.762 0.762)
-						)
-					)
-				)
-			)
-			(symbol "SK6812MINI-E_0_1"
-				(polyline
-					(pts
-						(xy 1.27 -2.54) (xy 1.778 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -3.556) (xy 1.778 -3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -1.524) (xy 1.27 -2.54) (xy 1.27 -2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -2.54) (xy 1.27 -3.556) (xy 1.27 -3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.683 -1.016) (xy 3.683 -3.556) (xy 3.683 -4.064)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.699 -1.524) (xy 2.667 -1.524) (xy 3.683 -3.556) (xy 4.699 -1.524)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 4.699 -3.556) (xy 2.667 -3.556)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 5.08 5.08)
-					(end -5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "SK6812MINI-E_1_1"
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "DIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 7.62 270)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "DOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Mechanical:MountingHole"
 			(pin_names
 				(offset 1.016)
@@ -3082,8 +2811,8 @@
 		(uuid "6222c672-4b0e-4505-8fdd-fd0862dcca4f")
 	)
 	(rectangle
-		(start 127 179.07)
-		(end 161.29 194.31)
+		(start 113.03 71.12)
+		(end 147.32 86.36)
 		(stroke
 			(width 0)
 			(type default)
@@ -3404,10 +3133,6 @@
 		(uuid "fad09b47-e050-47f2-8b60-e80bc31fae30")
 	)
 	(no_connect
-		(at 205.74 146.05)
-		(uuid "4ba6e55e-a0cc-4391-9864-9e4eac674fa9")
-	)
-	(no_connect
 		(at 49.53 129.54)
 		(uuid "4f907717-be06-4d99-8a14-7161ed84019b")
 	)
@@ -3493,6 +3218,16 @@
 	)
 	(wire
 		(pts
+			(xy 191.77 146.05) (xy 199.39 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19d4af0e-301b-46c4-8766-cbd9411a5027")
+	)
+	(wire
+		(pts
 			(xy 59.69 39.37) (xy 54.61 39.37)
 		)
 		(stroke
@@ -3510,16 +3245,6 @@
 			(type default)
 		)
 		(uuid "1d3e765e-53a7-4ba9-9545-91a8e6db7c6d")
-	)
-	(wire
-		(pts
-			(xy 186.69 146.05) (xy 190.5 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2161feb4-8e4b-410d-9a38-267aff5f4297")
 	)
 	(wire
 		(pts
@@ -4061,16 +3786,6 @@
 		)
 		(uuid "31738006-89e9-428f-9f25-464ee8b5aa1a")
 	)
-	(label "LED"
-		(at 186.69 146.05 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "34422179-f854-446d-b47f-a6e50e54aee9")
-	)
 	(label "D-"
 		(at 143.51 124.46 180)
 		(effects
@@ -4201,6 +3916,16 @@
 		)
 		(uuid "a13fefc6-928e-4b13-b316-a694fc48017a")
 	)
+	(label "LED"
+		(at 191.77 146.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3716f7a-adaa-41be-88bd-3cb3910a62df")
+	)
 	(label "Row1"
 		(at 138.43 134.62 180)
 		(effects
@@ -4253,7 +3978,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 133.35 186.69 180)
+		(at 119.38 78.74 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4264,7 +3989,7 @@
 		(fields_autoplaced yes)
 		(uuid "07800df8-13b6-457e-a79d-fe84ff4319cb")
 		(property "Reference" "#FLG03"
-			(at 133.35 188.595 0)
+			(at 119.38 80.645 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4275,7 +4000,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 133.35 191.77 0)
+			(at 119.38 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4285,7 +4010,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4296,7 +4021,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4307,7 +4032,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5663,7 +5388,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 153.67 186.69 0)
+		(at 139.7 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5674,7 +5399,7 @@
 		(fields_autoplaced yes)
 		(uuid "43afb7c0-c727-43ef-a502-071e55b17ff0")
 		(property "Reference" "#PWR020"
-			(at 153.67 193.04 0)
+			(at 139.7 85.09 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5685,7 +5410,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 153.67 191.77 0)
+			(at 139.7 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5695,7 +5420,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5706,7 +5431,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5717,7 +5442,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5741,7 +5466,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 144.78 186.69 0)
+		(at 130.81 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5752,7 +5477,7 @@
 		(fields_autoplaced yes)
 		(uuid "4ef17ef9-9f0e-44ac-8f02-97119bf3ec47")
 		(property "Reference" "#PWR019"
-			(at 144.78 190.5 0)
+			(at 130.81 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5763,7 +5488,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 144.78 181.61 0)
+			(at 130.81 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5773,7 +5498,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5784,7 +5509,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5795,7 +5520,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6628,7 +6353,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 153.67 186.69 0)
+		(at 139.7 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6639,7 +6364,7 @@
 		(fields_autoplaced yes)
 		(uuid "83603cd4-1def-4704-924c-a21279d5f18b")
 		(property "Reference" "#FLG04"
-			(at 153.67 184.785 0)
+			(at 139.7 76.835 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6650,7 +6375,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 153.67 181.61 0)
+			(at 139.7 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6660,7 +6385,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6671,7 +6396,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6682,7 +6407,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 153.67 186.69 0)
+			(at 139.7 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7000,94 +6725,6 @@
 		)
 	)
 	(symbol
-		(lib_id "LED:SK6812MINI-E")
-		(at 198.12 146.05 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8d27242a-76b2-41e5-adf6-8290a0ca18a7")
-		(property "Reference" "D1"
-			(at 212.09 139.6298 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SK6812MINI-E"
-			(at 212.09 142.1698 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_SK6812MINI-E_3.2x2.8mm_P1.5mm_ReverseMount"
-			(at 199.39 153.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C5149201.pdf"
-			(at 200.66 155.575 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Description" "RGB LED with integrated controller"
-			(at 198.12 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "18c24f87-f7d3-456b-82ac-9b4bebe364d6")
-		)
-		(pin "4"
-			(uuid "8c205f49-f164-466e-ad86-62239b7a5791")
-		)
-		(pin "1"
-			(uuid "3dc6de33-d976-44b4-be67-5ca501c99474")
-		)
-		(pin "2"
-			(uuid "c1e0c743-eefe-44e6-97d0-92b325e4273a")
-		)
-		(instances
-			(project "macro-keyboard"
-				(path "/cf53fae0-a927-439a-a4e5-3f09c01c20e3"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 134.62 38.1 0)
 		(mirror x)
@@ -7172,7 +6809,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 133.35 186.69 0)
+		(at 119.38 78.74 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7183,7 +6820,7 @@
 		(fields_autoplaced yes)
 		(uuid "94f7f0e2-fc59-4af4-841f-aa3832510a77")
 		(property "Reference" "#PWR018"
-			(at 133.35 190.5 0)
+			(at 119.38 82.55 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7194,7 +6831,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 133.35 181.61 0)
+			(at 119.38 73.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7204,7 +6841,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7215,7 +6852,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7226,7 +6863,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 133.35 186.69 0)
+			(at 119.38 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8989,7 +8626,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 144.78 186.69 180)
+		(at 130.81 78.74 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -9000,7 +8637,7 @@
 		(fields_autoplaced yes)
 		(uuid "db418f2f-f32e-4569-98c2-4ad26b2f2f3b")
 		(property "Reference" "#FLG01"
-			(at 144.78 188.595 0)
+			(at 130.81 80.645 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9011,7 +8648,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 144.78 191.77 0)
+			(at 130.81 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9021,7 +8658,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9032,7 +8669,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9043,7 +8680,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 144.78 186.69 0)
+			(at 130.81 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9146,158 +8783,58 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 198.12 138.43 0)
-		(unit 1)
-		(body_style 1)
+	(sheet
+		(at 199.39 139.7)
+		(size 13.97 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "ebe74954-3d5c-454d-8173-270c1493ee82")
-		(property "Reference" "#PWR013"
-			(at 198.12 142.24 0)
-			(hide yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c9c50e51-6130-4161-bee2-9097fd62c69f")
+		(property "Sheetname" "LED"
+			(at 199.39 138.9884 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left bottom)
 			)
 		)
-		(property "Value" "+5V"
-			(at 198.12 133.35 0)
+		(property "Sheetfile" "LED.kicad_sch"
+			(at 199.39 152.9846 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left top)
 			)
 		)
-		(property "Footprint" ""
-			(at 198.12 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
+		(pin "LED" input
+			(at 199.39 146.05 180)
+			(uuid "e0b1731a-0acd-4207-a8a1-dc936a396e13")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
-		)
-		(property "Datasheet" ""
-			(at 198.12 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 198.12 138.43 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d19ec1a1-f6b6-4c05-abaa-cc783444efa2")
 		)
 		(instances
 			(project "macro-keyboard"
 				(path "/cf53fae0-a927-439a-a4e5-3f09c01c20e3"
-					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 198.12 153.67 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fec86809-dfc7-49fd-a523-2a3146bf10e4")
-		(property "Reference" "#PWR012"
-			(at 198.12 160.02 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 198.12 158.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 198.12 153.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 198.12 153.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 198.12 153.67 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "0ff558ac-c010-4b23-ab6c-1ddf39726e15")
-		)
-		(instances
-			(project "macro-keyboard"
-				(path "/cf53fae0-a927-439a-a4e5-3f09c01c20e3"
-					(reference "#PWR012")
-					(unit 1)
+					(page "2")
 				)
 			)
 		)
