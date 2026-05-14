@@ -697,6 +697,10 @@
 		)
 		(uuid "400dd396-8aa3-4cc9-bb65-2fde4ebefbf7")
 	)
+	(no_connect
+		(at 182.88 31.75)
+		(uuid "72336d13-8eaa-4731-b0f3-bd5742ef9d7f")
+	)
 	(wire
 		(pts
 			(xy 40.64 31.75) (xy 45.72 31.75)
