@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "sakura") (type "KiCad") (uri "${KIPRJMOD}/libs/sakura.pretty") (options "") (descr "") (disabled))
+	(lib (name "silkscreen") (type "KiCad") (uri "${KIPRJMOD}/libs/silkscreen.pretty") (options "") (descr ""))
+)

@@ -4,6 +4,10 @@
 	(generator_version "10.0")
 	(uuid "cf53fae0-a927-439a-a4e5-3f09c01c20e3")
 	(paper "A4")
+	(title_block
+		(title "macro-key")
+		(date "2026-05-14")
+	)
 	(lib_symbols
 		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
 			(pin_names
