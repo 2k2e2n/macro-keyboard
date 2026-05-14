@@ -2,4 +2,5 @@
 	(version 7)
 	(lib (name "sakura") (type "KiCad") (uri "${KIPRJMOD}/libs/sakura.pretty") (options "") (descr "") (disabled))
 	(lib (name "silkscreen") (type "KiCad") (uri "${KIPRJMOD}/libs/silkscreen.pretty") (options "") (descr ""))
+	(lib (name "QRcode") (type "KiCad") (uri "${KIPRJMOD}/libs/QRcode") (options "") (descr ""))
 )

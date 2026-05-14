@@ -5065,7 +5065,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "DFU-mode"
+		(property "Value" "debug-SW"
 			(at 139.192 48.26 0)
 			(show_name no)
 			(do_not_autoplace no)
