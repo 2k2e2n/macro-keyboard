@@ -1,0 +1,353 @@
+body {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+}
+
+#connectBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#keymapControls {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#keymapControls .control-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+#keymapControls .control-row + .control-row {
+  margin-top: 6px;
+}
+
+#auxBtns {
+  font-size: 12px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+#auxBtns .aux-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+#numpad {
+  display: grid;
+  grid-template-columns: repeat(4, 80px); /* ← 60px → 80px に変更 */
+  grid-auto-rows: 80px;                   /* ← 高さも揃える */
+  gap: 8px;
+
+  width: calc(80px * 4 + 8px * 3);        /* ← 全体幅をキー幅に合わせる */
+
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.key {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 22px; /* ← 基本フォントサイズを少し大きく */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 4px; /* ← 長い文字がはみ出さないように */
+  position: relative; /* for switch number badge */
+}
+
+.key.long-label {
+  font-size: 16px; /* smaller for 6+ chars */
+}
+
+.key.fullwidth-label {
+  font-size: 14px; /* smaller for fullwidth chars */
+}
+
+.key.modifier-combo {
+  font-size: 14px;
+}
+
+.key.modifier-combo span {
+  line-height: 1.15;
+}
+
+.key:active {
+  background: #666;
+}
+
+.key.pending {
+  background: #554433;
+  border: 2px solid #ffaa44;
+}
+
+.key.pending:active {
+  background: #775555;
+}
+
+#log {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+.dialog {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.dialog-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#keyDialog .dialog-content {
+  width: min(760px, 96vw);
+}
+
+#keyDialog .category {
+  margin-bottom: 8px;
+}
+
+#keyDialog .category:last-of-type {
+  margin-bottom: 0;
+}
+
+#keyDialog .category h4 {
+  margin: 0 0 4px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.dialog-header h3 {
+  margin: 0;
+  flex: 1;
+}
+
+#closeDialog {
+  padding: 6px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.key-list button {
+  margin: 2px;
+  padding: 6px 8px;
+  font-size: 14px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#keyDialog .key-list button {
+  height: 32px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.key-list button.single-char {
+  width: 28px;
+}
+
+.modifier-key-list button {
+  min-width: 56px;
+}
+
+.modifier-key-list button.active {
+  background: #1976d2;
+  color: #fff;
+  border-color: #0d47a1;
+}
+
+.function-key-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.function-key-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.switchNo {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.9);
+  opacity: 0.9;
+  background: rgba(0,0,0,0.15);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.num-on {
+  background: #4caf50 !important;
+  color: #ffffff !important; /* ← 白文字でもいいが */
+}
+
+.num-on span {
+  color: #00ff00 !important; /* ← NumLock ON のとき文字を緑に */
+}
+
+.num-off {
+  background: #b71c1c !important;
+  color: #ffffff !important;
+}
+
+.fn-on {
+  background: #4caf50 !important;
+  color: #ffffff !important;
+}
+
+.macro-editor-content {
+  width: min(960px, 95vw);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+#macroEditorDialog .dialog-header {
+  margin-bottom: 10px;
+}
+
+#macroEditorDialog .category {
+  margin-bottom: 8px;
+}
+
+#macroEditorDialog .category:last-of-type {
+  margin-bottom: 0;
+}
+
+#macroEditorDialog .category h4 {
+  margin: 0 0 4px;
+}
+
+.macro-editor-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+#macroSlots button.active {
+  background: #1976d2;
+  color: #fff;
+}
+
+#macroSlots button.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.macro-sequence {
+  min-height: 44px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fafafa;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.macro-sequence-empty {
+  color: #666;
+  font-size: 13px;
+}
+
+.macro-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #fff;
+  font-size: 12px;
+}
+
+.remove-token {
+  border: none;
+  background: #ddd;
+  border-radius: 999px;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.macro-edit-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.macro-usage-list {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px;
+  background: #fff;
+}
+
+.macro-usage-list button {
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  min-width: 2ch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.macro-usage-btn.active,
+.macro-usage-btn[aria-pressed="true"] {
+  background: #cfe8ff;
+  border-color: #5d9bd6;
+  color: #123b63;
+  font-weight: 700;
+}
