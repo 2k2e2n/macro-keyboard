@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keypad Config</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+
+<header class="header">
+  <div class="header__inner">
+    <h1 class="header__title header-title">
+      <a href="#">Keypad config</a>
+    </h1>
+    <nav class="header__nav">
+      <div class="nav__items">
+        <div class="nav-items__item">
+          <button id="connectBtn" class="button-connect">キーボードに接続</button>
+        </div>
+        <div class="nav-items__item">
+          <div id="statusBadge" class="status-badge inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm text-slate-600 shadow-sm">
+            <span class="status-dot h-2.5 w-2.5 rounded-full bg-slate-400"></span>
+            <span class="status-text">未接続</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="main">
+  <div class="app-shell max-w-6xl mx-auto p-6 space-y-6">
+
+  <!-- 操作ボタン群 -->
+  <div class="panel rounded-[32px] border border-slate-200 bg-white p-5 shadow-sm">
+    <div class="panel-label text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 mb-3">キーマップ操作</div>
+    <div id="keymapControls" class="flex flex-wrap gap-3">
+      <button id="readKeymapBtn"    disabled>🔄読み出す</button>
+      <button id="writeKeymapBtn"   disabled>💾書き込む</button>
+      <button id="readMacrosBtn"    disabled>📥マクロ読み出し</button>
+      <button id="writeMacrosBtn"   disabled>📥マクロ書き込み</button>
+      <button id="openMacroEditorBtn" disabled>✏️マクロ編集</button>
+    </div>
+  </div>
+
+  <!-- テンキー -->
+  <div class="numpad-wrap rounded-[32px] border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="panel-label text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 mb-4">キー配置</div>
+    <div id="numpad" class="grid grid-cols-4 gap-3 mt-4"></div>
+  </div>
+
+  <!-- デバッグ・開発ボタン -->
+  <div id="auxBtns" class="flex flex-wrap gap-3 items-center">
+    <button id="resetKeymapBtn"    disabled>デフォルトにリセット</button>
+    <button id="startBootloaderBtn" disabled>ブートローダー開始</button>
+    <button id="readNvmBtn"      disabled>NVM 読み出し</button>
+    <button id="readMacroPtrsBtn" disabled>macro ptrs</button>
+  </div>
+
+  <!-- ログ -->
+  <div class="log-wrap rounded-[32px] border border-slate-200 bg-white p-0 shadow-sm overflow-hidden">
+    <div class="log-header flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
+      <span class="log-title text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">ログ</span>
+      <button id="clearLogBtn">クリア</button>
+    </div>
+    <div id="log" class="font-mono text-sm text-slate-600 whitespace-pre-wrap p-4 max-h-48 overflow-y-auto bg-slate-50"></div>
+  </div>
+
+</div><!-- /.app-shell -->
+</main>
+
+<footer class="footer">
+    <div>
+      CH552 Keypad Configurator - by 2k2e2n
+    </div>
+    <div>
+      Build 2026.06.10
+    </div>
+</footer>
+
+<!-- ===== キー選択ダイアログ ===== -->
+<div id="keyDialog" class="dialog hidden">
+  <div class="dialog-content w-full max-w-6xl">
+    <div class="dialog-header flex items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-5">
+      <h3 class="text-xl font-semibold text-slate-900">キーを選択</h3>
+      <button id="closeDialog" class="rounded-2xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-600 transition hover:bg-slate-200">✖閉じる</button>
+    </div>
+
+    <div class="category">
+      <h4>修飾キー（クリックで有効化）</h4>
+      <div id="modifierKeys" class="key-list modifier-key-list"></div>
+    </div>
+    <div class="category">
+      <h4>文字・数字・記号</h4>
+      <div id="charKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>テンキー</h4>
+      <div id="keypadKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>編集機能キー</h4>
+      <div id="editKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>日本語拡張キー</h4>
+      <div id="jpExtKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>メディアキー</h4>
+      <div id="specialKeyCodes" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>マウスシミュレーション</h4>
+      <div id="mouseSimKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>ファンクションキー</h4>
+      <div class="function-key-rows">
+        <div id="functionKeysF1ToF12" class="key-list function-key-row"></div>
+        <div id="functionKeysF1ToF24" class="key-list function-key-row"></div>
+      </div>
+    </div>
+    <div class="category">
+      <h4>マクロコード</h4>
+      <div id="macroKeys" class="key-list"></div>
+    </div>
+    <div class="category">
+      <h4>レイヤー切替</h4>
+      <div id="layerKeys" class="key-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 特殊機能キーダイアログ（フォールバック用） ===== -->
+<div id="specialKeyDialog" class="dialog hidden">
+  <div class="dialog-content w-full max-w-2xl">
+    <div class="dialog-header flex items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-5">
+      <h3 class="text-xl font-semibold text-slate-900">特殊機能キーの設定</h3>
+      <button id="closeSpecialDialog" class="rounded-2xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-600 transition hover:bg-slate-200">✖閉じる</button>
+    </div>
+    <div class="key-list flex flex-wrap gap-3">
+      <button id="setNumLock" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-100">NumLock キーとして使用</button>
+      <button id="setFn" class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-100">Fn キーとして使用（レイヤー切替）</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== マクロ編集ダイアログ ===== -->
+<div id="macroEditorDialog" class="dialog hidden">
+  <div class="dialog-content macro-editor-content w-full max-w-6xl">
+    <div class="dialog-header flex items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-5">
+      <h3 class="text-xl font-semibold text-slate-900">マクロコード編集</h3>
+      <button id="closeMacroEditorDialog" class="rounded-2xl border border-slate-200 bg-slate-100 px-4 py-2 text-sm text-slate-600 transition hover:bg-slate-200">閉じる</button>
+    </div>
+
+    <div class="macro-editor-meta flex flex-wrap gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+      <div id="macroStorageStatus">使用中: 0 / 45 bytes</div>
+      <div id="macroRemainingBytes">残り: 45 bytes</div>
+    </div>
+
+    <div class="category">
+      <h4>編集対象マクロ</h4>
+      <div id="macroSlots" class="key-list"></div>
+    </div>
+
+    <div class="category">
+      <h4>現在のマクロコード</h4>
+      <div id="macroSequence" class="macro-sequence"></div>
+      <div class="macro-edit-actions">
+        <button id="macroDeleteLastBtn" disabled>末尾を削除</button>
+        <button id="macroClearBtn"      disabled>このマクロをクリア</button>
+      </div>
+    </div>
+
+    <div class="category">
+      <h4>追加するキー</h4>
+      <div id="macroBasicKeys" class="key-list macro-usage-list"></div>
+    </div>
+    <div class="category">
+      <h4>修飾キー</h4>
+      <div id="macroModifierKeys" class="key-list macro-usage-list"></div>
+    </div>
+    <div class="category">
+      <h4>日本語拡張キー</h4>
+      <div id="macroJpKeys" class="key-list macro-usage-list"></div>
+    </div>
+    <div class="category">
+      <h4>特殊機能（遅延・繰り返し）</h4>
+      <div id="macroDelayKeys" class="key-list macro-usage-list"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

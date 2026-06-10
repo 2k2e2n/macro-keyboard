@@ -3000,6 +3000,26 @@
 		)
 		(uuid "c1a40143-a16e-416d-aa3c-91d41ef26a34")
 	)
+	(text "2.2k"
+		(exclude_from_sim no)
+		(at 90.17 188.468 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "544a0e2b-1864-4119-b47d-5ce1a1090c63")
+	)
+	(text "memo\ncol2がリセットピンに接続されている⇒P3.2で代用\nBOOTするとき、10kだと大きすぎて書き込めない\nOSTW3535C1のパッケージサイズ違う\n上のLED使うならVCCを3v3にする"
+		(exclude_from_sim no)
+		(at 95.758 102.362 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "985a5f1e-4fdd-43ae-b979-d5545c045c99")
+	)
 	(text_box "keyswitch"
 		(exclude_from_sim no)
 		(at 182.88 14.5656 0)
@@ -3384,6 +3404,16 @@
 		)
 		(uuid "26c294d7-2373-4ff9-a0e2-f2263632d8de")
 	)
+	(polyline
+		(pts
+			(xy 85.09 184.15) (xy 85.09 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27d29060-bd21-4a6d-b135-cff28b298774")
+	)
 	(wire
 		(pts
 			(xy 38.1 148.59) (xy 46.99 148.59)
@@ -3414,6 +3444,16 @@
 		)
 		(uuid "3902b506-5de0-4341-8523-d4dafc17ac50")
 	)
+	(polyline
+		(pts
+			(xy 85.09 184.15) (xy 85.09 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "396fa5c6-92f4-410a-a730-73fc4f4354ff")
+	)
 	(wire
 		(pts
 			(xy 215.9 40.64) (xy 215.9 58.42)
@@ -3443,6 +3483,16 @@
 			(type default)
 		)
 		(uuid "47479343-4ff4-4e33-a0cf-417d2ead6f31")
+	)
+	(polyline
+		(pts
+			(xy 86.36 185.42) (xy 85.09 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b308c0b-e281-4a6e-9a2b-0ba250caa0a2")
 	)
 	(wire
 		(pts
@@ -3544,6 +3594,16 @@
 		)
 		(uuid "6ab43130-e8ce-400b-bf1b-f1d2dfdbd24a")
 	)
+	(polyline
+		(pts
+			(xy 85.09 184.15) (xy 86.36 184.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74b65ef3-b6ae-4e7f-9906-2c11b4bc6c4f")
+	)
 	(wire
 		(pts
 			(xy 38.1 153.67) (xy 46.99 153.67)
@@ -3563,6 +3623,16 @@
 			(type default)
 		)
 		(uuid "7f9fab48-6ea4-44d0-b579-f13dbf590cac")
+	)
+	(polyline
+		(pts
+			(xy 86.36 185.42) (xy 87.63 186.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80a5ba7a-7181-4e42-89d0-6e086434715b")
 	)
 	(wire
 		(pts
