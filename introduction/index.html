@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aethelred Custom - 洗練の極致。自作の再定義。</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&amp;family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-container": "#636466",
+                        "on-primary-fixed": "#1a1c1d",
+                        "primary-fixed-dim": "#c6c6c8",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "on-primary-fixed-variant": "#454749",
+                        "outline": "#8f9194",
+                        "tertiary-container": "#e3e2e7",
+                        "tertiary-fixed": "#e3e2e7",
+                        "secondary-container": "#474747",
+                        "on-tertiary-container": "#646469",
+                        "on-secondary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#c5c7c9",
+                        "surface-dim": "#141313",
+                        "surface": "#141313",
+                        "surface-tint": "#c6c6c8",
+                        "primary-fixed": "#e2e2e4",
+                        "on-tertiary": "#2f3034",
+                        "background": "#141313",
+                        "surface-container-highest": "#353434",
+                        "on-primary": "#2f3132",
+                        "inverse-on-surface": "#313030",
+                        "secondary": "#c6c6c6",
+                        "tertiary": "#ffffff",
+                        "inverse-surface": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "primary-container": "#e2e2e4",
+                        "on-secondary-container": "#b5b5b5",
+                        "on-error": "#690005",
+                        "surface-variant": "#353434",
+                        "inverse-primary": "#5d5e60",
+                        "surface-bright": "#3a3939",
+                        "tertiary-fixed-dim": "#c7c6cb",
+                        "outline-variant": "#44474a",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary": "#303030",
+                        "primary": "#ffffff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#1a1b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "unit": "8px",
+                        "margin-mobile": "24px",
+                        "section-gap": "160px",
+                        "container-max": "1440px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "mono-technical": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "mono-technical": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(29, 29, 31, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(245, 245, 247, 0.1);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(180deg, #FFFFFF 0%, #A1A1A6 100%);
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary selection:text-background">
+<!-- TopNavBar -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-outline-variant/10 flat no shadows flex justify-between items-center w-full px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md tracking-tighter text-primary dark:text-primary">
+            macro Keyboard
+        </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 font-body-md text-body-md" href="#features">Features</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors hover:scale-105 transition-transform duration-300 font-body-md text-body-md" href="#specs">Specs</a>
+</div>
+<div>
+<button class="bg-[#F5F5F7] text-[#000000] px-6 py-2 rounded font-label-caps hover:scale-[1.02] transition-transform duration-300">
+                Buy Now
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<img id="heroSlide" alt="キーボードのスライド" class="w-full h-full object-cover object-center opacity-80 transition-opacity duration-700" src="img1.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-[1000px] fade-in-up">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-gradient mb-6">
+                    完全自作キーボード
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    何度も試行錯誤を重ねて完成した一品
+                </p>
+<button class="bg-[#F5F5F7] text-[#000000] px-8 py-3 rounded-full font-label-caps hover:scale-[1.02] transition-transform duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+                    Explore Aethelred
+                </button>
+<div class="mt-8 flex justify-center gap-3" id="heroCarouselControls"></div>
+</div>
+</section>
+<!-- Section 1: Hot-swap -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="features">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1 fade-in-up">
+<span class="inline-block px-3 py-1 bg-[#2C2C2E] text-[#86868B] font-label-caps text-label-caps rounded-full mb-6">FLEXIBILITY</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">ホットスワップ対応。</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                        MX Cherry互換スイッチに完全対応。工具一つで、いつでも好みの打鍵感へ。
+                    </p>
+</div>
+<div class="order-1 md:order-2 glass-panel rounded-xl p-2 md:p-8 fade-in-up">
+<img alt="" class="w-full h-auto rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsg04prsImDfhflRht5ASGi99nmMR3L1Pwd31xbjxy3M83l47kXEwKFNzb6dcGPM2kESyPt5kK_g0Or-kMYNPcUtoJ-NEgqHDgeqp2jR2lMD4i9wu_6jXu3Apx1M7M4R6-YhIGNVT16nObX8mJkAueKnUXvlF-IhFOfhSLul9kiV5Q3ETBvQWn4va-d9Ew-SkXoutCIbEX4xTkRsA3APKiEOqm5JKdvKCONaTFX7tgvgMlakcVCOvclscxYVIU7hUBYFxqyFbX_Zya"/>
+</div>
+</div>
+</section>
+<!-- Section 2: PCB Design -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="glass-panel rounded-xl p-2 md:p-8 fade-in-up">
+<img alt="基盤設計のイメージ" class="w-full h-auto rounded-lg object-cover" src="img3.webp"/>
+</div>
+<div class="fade-in-up md:pl-12">
+<span class="inline-block px-3 py-1 bg-[#2C2C2E] text-[#86868B] font-label-caps text-label-caps rounded-full mb-6">ENGINEERING</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">基盤設計へのこだわり。</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                            2層の配線レイアウトに、ビアを適切な位置に打つことでノイズへの高い耐性のある基盤を作製。また、リセットボタンやブートローダーモードへのアクセスも容易に。細部までこだわった設計で、安定した動作を実現しています。
+                        </p>
+</div>
+</div>
+</section>
+<!-- Section 3: Encoder & Connectivity -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-[#1D1D1F]">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="glass-panel rounded-xl p-2 md:p-8 fade-in-up">
+<img alt="" class="w-full h-auto rounded-lg object-cover" src="img4.jpg"/>
+</div>
+<div class="fade-in-up md:pl-12">
+<span class="inline-block px-3 py-1 bg-[#2C2C2E] text-[#86868B] font-label-caps text-label-caps rounded-full mb-6">PRECISION</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">直感的な操作。確実な接続。</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                            高精度ロータリーエンコーダと、安定したUSB-C接続。プロフェッショナルなワークフローを支えます。金属削り出しのノブが、確かなフィードバックを指先に伝えます。
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Remapping -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col items-center text-center mb-16 fade-in-up">
+<span class="inline-block px-3 py-1 bg-[#2C2C2E] text-[#86868B] font-label-caps text-label-caps rounded-full mb-6">CONTROL</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">自由自在なリマップ。</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    専用ツールでキー配置をカスタマイズ。あなただけの最適なレイアウトを。直感的なUIで、マクロの割り当ても思いのまま。HTMLを使用しているので専用アプリのダウンロード不要。
+                </p>
+</div>
+<div class="glass-panel rounded-xl p-4 md:p-12 max-w-5xl mx-auto fade-in-up shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+<img alt="" class="w-full h-auto rounded-lg object-cover" src="img2.webp"/>
+</div>
+</section>
+<!-- Specs Section (Bento Grid Example) -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-[#000000]" id="specs">
+<div class="max-w-container-max mx-auto">
+<h2 class="font-headline-md text-headline-md text-primary mb-16 text-center fade-in-up">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+<div class="glass-panel rounded-xl p-8 fade-in-up flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<div>
+<p class="font-label-caps text-label-caps text-[#86868B] mb-2">MICROCONTROLLER</p>
+<p class="font-body-lg text-body-lg text-[#F5F5F7]">CH552T</p>
+</div>
+<span class="material-symbols-outlined text-outline mt-8" style="font-variation-settings: 'FILL' 0;">memory</span>
+</div>
+<div class="glass-panel rounded-xl p-8 fade-in-up flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<div>
+<p class="font-label-caps text-label-caps text-[#86868B] mb-2">CONNECTIVITY</p>
+<p class="font-body-lg text-body-lg text-[#F5F5F7]">USB Type-C</p>
+</div>
+<span class="material-symbols-outlined text-outline mt-8" style="font-variation-settings: 'FILL' 0;">usb</span>
+</div>
+<div class="glass-panel rounded-xl p-8 fade-in-up flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300">
+<div>
+<p class="font-label-caps text-label-caps text-[#86868B] mb-2">SWITCH COMPATIBILITY</p>
+<p class="font-body-lg text-body-lg text-[#F5F5F7]">Hot-swappable (MXcherry only)</p>
+</div>
+<span class="material-symbols-outlined text-outline mt-8" style="font-variation-settings: 'FILL' 0;">keyboard</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background full-width py-section-gap border-t border-outline-variant/10 flat no shadows flex flex-col items-center gap-unit max-w-container-max mx-auto px-margin-desktop text-center">
+<div class="font-display-lg text-body-lg text-primary mb-8">
+            CH552T macroKeyboard by 2k2e2n
+        </div>
+<div class="flex gap-8 mb-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-mono-technical text-mono-technical" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-mono-technical text-mono-technical" href="#">Privacy</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors font-mono-technical text-mono-technical" href="#">Support</a>
+</div>
+<div class="text-on-surface-variant dark:text-on-surface-variant font-mono-technical text-mono-technical">
+            © 2026 2k2e2n. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Simple intersection observer for scroll animations and hero carousel
+        document.addEventListener("DOMContentLoaded", () => {
+            const heroImages = [
+                { src: 'img1.webp', alt: '' },
+                { src: 'img6.webp', alt: '' },
+                { src: 'img7.webp', alt: '' },
+                { src: 'img8.webp', alt: '' }
+            ];
+            const heroSlide = document.getElementById('heroSlide');
+            const controls = document.getElementById('heroCarouselControls');
+            let activeIndex = 0;
+            let carouselTimer = null;
+
+            const setSlide = (index) => {
+                activeIndex = index;
+                heroSlide.style.opacity = '0';
+                window.setTimeout(() => {
+                    heroSlide.src = heroImages[index].src;
+                    heroSlide.alt = heroImages[index].alt;
+                    heroSlide.style.opacity = '0.8';
+                }, 700);
+
+                controls.querySelectorAll('button').forEach((button, buttonIndex) => {
+                    button.classList.toggle('bg-white', buttonIndex === index);
+                    button.classList.toggle('bg-white/30', buttonIndex !== index);
+                });
+            };
+
+            const startCarousel = () => {
+                carouselTimer = window.setInterval(() => {
+                    setSlide((activeIndex + 1) % heroImages.length);
+                }, 5000);
+            };
+
+            heroImages.forEach((image, index) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'h-3 w-3 rounded-full bg-white/30 ring-1 ring-white/30 transition-all duration-300 hover:bg-white/80';
+                button.setAttribute('aria-label', `Slide ${index + 1}`);
+                button.addEventListener('click', () => {
+                    clearInterval(carouselTimer);
+                    setSlide(index);
+                    startCarousel();
+                });
+                controls.appendChild(button);
+            });
+
+            setSlide(0);
+            startCarousel();
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>
